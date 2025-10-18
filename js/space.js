@@ -14,7 +14,7 @@ boton.addEventListener('click', function(){
         mostrarResultados(filtrado);
     })
     .catch(error => {
-        console.error("Error fetching data:", error);
+        console.error("Error:", error);
         contenedor.innerHTML = "<p>Error al obtener los datos.</p>";
     });
 });
@@ -37,12 +37,27 @@ function mostrarResultados(resultados){
     resultados.forEach(item => {
         const titulo = (item.data[0]?.title) || "Sin título";
         const imagen = (item.links?.[0]?.href) || "Sin imagen";
+        const desc = (item.data?.[0]?.description) || "Sin descripción";
+        const fecha = (item.data?.[0]?.date_created) || "Sin fecha";
 
-        const div = document.createElement("div");
-        div.innerHTML = `
-            <h3>${titulo}</h3>
-            <img src="${imagen}" alt="${titulo}" width="200" />
+        const cartas = document.createElement("div");
+        cartas.innerHTML = `
+            <img src="${imagen}" alt="${imagen}" />
         `;
-        contenedor.appendChild(div);
+        cartas.classList.add("card");
+        const title = document.createElement("div");
+        title.innerHTML = `
+        <h3>${titulo}</h3>
+        `;
+        title.classList.add("card-title");
+        const info = document.createElement('div');
+        info.innerHTML = `
+            <p>${desc}</p>
+            <p>${fecha}</p>
+        `;
+        info.classList.add("card-body");
+        cartas.appendChild(title);
+        cartas.appendChild(info);
+        contenedor.appendChild(cartas);
     });
 }

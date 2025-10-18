@@ -1,3 +1,36 @@
 main {
     min-height: calc(100vh - 160px);
   }
+
+  .card {
+   width: 26rem;
+   height: fit-content;
+   background-color: rgba(203, 203, 203, 0.274);
+   align-items: center;
+   padding-top: 1rem;
+  }
+
+  .card img{
+   width: 380px;
+   height: 300px;
+  }
+
+  .card-title {
+   text-align: center;
+   padding-top: 1rem;
+  }
+
+  .card-body {
+    height: fit-content;
+    padding-top: 0;
+  }
+
+  #contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5vh;
+    justify-content: center;
+  }
+
+  
